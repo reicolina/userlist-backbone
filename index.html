@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 	<title>User List App</title>
 </head>
 <body>
-	<h1>User List</h1>
-	<input type="text" placeholder="serach by name">
-	<table>
-		<tr>
-			<td>Rei</td>
-			<td><button>x</button></td>
-		</tr>
-		<tr>
-			<td>Arnold</td>
-			<td><button>x</button></td>
-		</tr>
-		<tr>
-			<td>Trevor</td>
-			<td><button>x</button></td>
-		</tr>
-		<tr>
-			<td>Alex</td>
-			<td><button>x</button></td>
-		</tr>
-	</table>
-	<span>Displaying 4 users</span><br/>
-	<button>New User</button>
+	<h3>User List</h3>
+	<div style="width:300px">
+		<input type="text" class="form-control" placeholder="search by name"><br/>
+		<table class="table table-hover .table-condensed">
+			<tr>
+				<td>Rei</td>
+				<td><button class="btn btn-danger btn-xs">x</button></td>
+			</tr>
+			<tr>
+				<td>Arnold</td>
+				<td><button class="btn btn-danger btn-xs">x</button></td>
+			</tr>
+			<tr>
+				<td>Trevor</td>
+				<td><button class="btn btn-danger btn-xs">x</button></td>
+			</tr>
+			<tr>
+				<td>Alex</td>
+				<td><button class="btn btn-danger btn-xs">x</button></td>
+			</tr>
+		</table>
+		<p class="text-right">Displaying 4 users</p>
+		<button class="btn btn-primary pull-right">New User</button>
+	</div>
 </body>
 </html>
