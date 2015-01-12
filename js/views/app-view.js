@@ -14,11 +14,16 @@ var app = app || {};
 		// the App already present in the HTML.
 		el: '#usersapp',
 
+		// Our template for the user counter
+		counterTemplate: _.template($('#counter-template').html()),
+
 		// At initialization, kick things off by
 		// loading any preexisting users that might be saved.
 		initialize: function () {
 			this.$list = $('#user-list');
+			this.$count = $('#user-count');
 			this.addAll();
+			this.render();
 		},
 
 		// Add a single user to the list by creating a view for it, and
@@ -32,6 +37,17 @@ var app = app || {};
 		addAll: function () {
 			this.$list.html('');
 			app.users.each(this.addOne, this);
+		},
+
+		render: function () {
+			var count = app.users.length;
+			if (count) {
+				this.$count.html(this.counterTemplate({
+					count: count,
+				}));
+			} else {
+				this.$count.hide();
+			}
 		},
 
 	});
