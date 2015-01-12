@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-	<title>User List App</title>
-</head>
-<body>
-	<h3>User List</h3>
-	<div id="usersapp" style="width:300px">
-		<input type="text" class="form-control" placeholder="search by name"><br/>
-		<table id="user-list" class="table table-hover .table-condensed"></table>
-		<div id="user-count"></div>
-		<button class="btn btn-primary pull-right">New User</button>
-	</div>
-	<script type="text/template" id="user-template">
-		<td><%- fullName %></td>
-		<td><button class="btn btn-danger btn-xs pull-right">x</button></td>
-	</script>
-	<script type="text/template" id="counter-template">
-		<p class="text-right">Displaying <%- count %> users</p>
-	</script>
-	<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-	<script src="lib/underscore/underscore-min.js"></script>
-	<script src="lib/backbone/backbone-min.js"></script>
-	<script src="js/models/user.js"></script>
-	<script src="js/collections/users.js"></script>
-	<script src="js/views/user-view.js"></script>
-	<script src="js/views/app-view.js"></script>
-	<script src="js/app.js"></script>
-</body>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <title>User List App</title>
+    </head>
+    <body>
+        <h3>User List</h3>
+        <div id="usersapp" style="width:300px">
+            <input type="text" class="form-control" placeholder="search by name"><br/>
+            <table id="user-list" class="table table-hover .table-condensed"></table>
+            <div id="user-count"></div>
+            <button class="btn btn-primary pull-right">New User</button>
+        </div>
+        <script type="text/template" id="user-template">
+            <td><%- fullName %></td>
+            <td><button class="btn btn-danger btn-xs pull-right">x</button></td>
+        </script>
+        <script type="text/template" id="counter-template">
+            <p class="text-right">Displaying <%- count %> users</p>
+        </script>
+        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <script src="lib/underscore/underscore-min.js"></script>
+        <script src="lib/backbone/backbone-min.js"></script>
+        <script src="js/models/user.js"></script>
+        <script src="js/collections/users.js"></script>
+        <script src="js/views/user-view.js"></script>
+        <script src="js/views/app-view.js"></script>
+        <script src="js/app.js"></script>
+    </body>
 </html>

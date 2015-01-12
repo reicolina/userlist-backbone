@@ -1,19 +1,18 @@
-/*global Backbone */
-var app = app || {};
+window.app = window.app || {};
 
 (function () {
-	'use strict';
+    'use strict';
 
-	// User Model
-	// ----------
+    // User Model
+    // ----------
 
-	// Our basic **User** model has `name`, `phone`, and `group` attributes.
-	app.User = Backbone.Model.extend({
-		// Default attributes for the user
-		defaults: {
-			fullName: '',
-			phone: '',
-			group: ''
-		}
-	});
-})();
+    // Our basic **User** model has `name`, `phone`, and `group` attributes.
+    window.app.User = Backbone.Model.extend({
+        // Default attributes for the user
+        defaults: {
+            fullName: '',
+            phone: '',
+            group: ''
+        }
+    });
+}());

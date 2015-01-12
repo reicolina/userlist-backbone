@@ -1,10 +1,8 @@
-/*global $ */
-/*jshint unused:false */
-var app = app || {};
+window.app = window.app || {};
 
 $(function () {
-	'use strict';
+    'use strict';
 
-	// kick things off by creating the `App`
-	new app.AppView();
+    // kick things off by creating the `App`
+    return new window.app.AppView();
 });
