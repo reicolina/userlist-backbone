@@ -15,4 +15,11 @@ var app = app || {};
 
 	// Create our global collection of **Users**.
 	app.users = new Users();
+	// Populate the collection with dummy data (for now!)
+	var user = new app.User();
+	user.set("fullName", "Luis Brown");
+	app.users.push(user);
+	user = new app.User();
+	user.set("fullName", "Carlos Smith");
+	app.users.push(user);
 })();
