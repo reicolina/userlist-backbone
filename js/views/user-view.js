@@ -1,6 +1,6 @@
 window.app = window.app || {};
 
-(function ($) {
+(function () {
     'use strict';
 
     // User Item View
@@ -12,7 +12,7 @@ window.app = window.app || {};
         tagName:  'tr',
 
         // Cache the template function for a single item.
-        template: _.template($('#user-template').html()),
+        template: _.template('<td><%- fullName %></td><td><button id="deleteBtn" class="btn btn-danger btn-xs pull-right">x</button></td>'),
 
         // The DOM events specific to a user.
         events: {
@@ -35,4 +35,4 @@ window.app = window.app || {};
         }
 
     });
-}(jQuery));
+}());

@@ -12,7 +12,7 @@ window.app = window.app || {};
         tagName:  'div',
 
         // Cache the template function
-        template: _.template($('#search-template').html()),
+        template: _.template('<input id="user-search" type="text" class="form-control" placeholder="search by name"><br/>'),
 
         // The DOM events specific to an item.
         events: {

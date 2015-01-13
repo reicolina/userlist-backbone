@@ -14,7 +14,7 @@ window.app = window.app || {};
         el: '#usersapp',
 
         // Our template for the user counter
-        counterTemplate: _.template($('#counter-template').html()),
+        counterTemplate: _.template('<p class="text-right">Displaying <%- count %> users</p>'),
 
         // At initialization, kick things off by
         // loading any preexisting users that might be saved.

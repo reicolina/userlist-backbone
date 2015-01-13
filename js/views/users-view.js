@@ -12,7 +12,7 @@ window.app = window.app || {};
         tagName:  'table',
 
         // Cache the template function for the users list.
-        template: _.template($('#users-template').html()),
+        template: _.template('<table id="user-list" class="table table-hover .table-condensed"></table>'),
 
         // At initialization, kick things off by
         // loading any preexisting users that might be saved.
