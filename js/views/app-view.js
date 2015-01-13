@@ -23,7 +23,7 @@ window.app = window.app || {};
             this.$search = $('#search-box');
             this.$list = $('#user-section');
             this.$count = $('#user-count');
-            this.listenTo(window.app.users, 'all', this.renderCounter);
+            this.listenTo(window.app.users, 'remove', this.decreaseCount);
             this.listenTo(window.app.search, 'change:text', this.addUsersSection);
             this.addSearch();
             this.addUsersSection();
@@ -36,15 +36,23 @@ window.app = window.app || {};
 
         // Add all items in the **Users** collection at once.
         addUsersSection: function (search) {
-            var userList = new window.app.UsersView({ collection: window.app.users });
-            userList.setSearch(search);
-            this.$list.append(userList.renderUsers());
-            this.renderCounter(userList.getCount());
+            this.userList = new window.app.UsersView({ collection: window.app.users });
+            this.userList.setSearch(search);
+            this.$list.append(this.userList.renderUsers());
+            this.renderCounter();
         },
 
-        renderCounter: function (count) {
-            if (!count) {
+        decreaseCount: function () {
+            this.userList.setCount(this.userList.getCount() - 1);
+            this.renderCounter();
+        },
+
+        renderCounter: function () {
+            var count;
+            if (!this.userList.getCount()) {
                 count = 0;
+            } else {
+                count = this.userList.getCount();
             }
             this.$count.html(this.counterTemplate({
                 count: count,

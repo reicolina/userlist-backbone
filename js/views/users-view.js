@@ -50,6 +50,10 @@ window.app = window.app || {};
             }
         },
 
+        setCount: function (newCount) {
+            this.count = newCount;
+        },
+
         getCount: function () {
             return this.count;
         }
