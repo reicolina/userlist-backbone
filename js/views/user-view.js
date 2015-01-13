@@ -14,9 +14,19 @@ window.app = window.app || {};
         // Cache the template function for a single item.
         template: _.template($('#user-template').html()),
 
+        // The DOM events specific to a user.
+        events: {
+            'click #deleteBtn': 'delete'
+        },
+
         // The userView listens for changes to its model, re-rendering.
         initialize: function () {
             this.listenTo(this.model, 'change', this.render);
+            this.listenTo(this.model, 'destroy', this.remove);
+        },
+
+        delete: function () {
+            this.model.destroy();
         },
 
         render: function () {

@@ -19,34 +19,36 @@ window.app = window.app || {};
         // At initialization, kick things off by
         // loading any preexisting users that might be saved.
         initialize: function () {
-            this.$list = $('#user-list');
+            _.bind(this.addUsersSection, this, window.app.search);
+            this.$search = $('#search-box');
+            this.$list = $('#user-section');
             this.$count = $('#user-count');
-            this.addAll();
-            this.render();
+            this.listenTo(window.app.users, 'all', this.renderCounter);
+            this.listenTo(window.app.search, 'change:text', this.addUsersSection);
+            this.addSearch();
+            this.addUsersSection();
         },
 
-        // Add a single user to the list by creating a view for it, and
-        // appending its element to the `<table>`.
-        addOne: function (user) {
-            var view = new window.app.UserView({ model: user });
-            this.$list.append(view.render().el);
+        addSearch: function () {
+            var searchBox = new window.app.SearchView({ model: window.app.search });
+            this.$search.append(searchBox.render().el);
         },
 
         // Add all items in the **Users** collection at once.
-        addAll: function () {
-            this.$list.html('');
-            window.app.users.each(this.addOne, this);
+        addUsersSection: function (search) {
+            var userList = new window.app.UsersView({ collection: window.app.users });
+            userList.setSearch(search);
+            this.$list.append(userList.renderUsers());
+            this.renderCounter(userList.getCount());
         },
 
-        render: function () {
-            var count = window.app.users.length;
-            if (count) {
-                this.$count.html(this.counterTemplate({
-                    count: count,
-                }));
-            } else {
-                this.$count.hide();
+        renderCounter: function (count) {
+            if (!count) {
+                count = 0;
             }
+            this.$count.html(this.counterTemplate({
+                count: count,
+            }));
         },
 
     });
