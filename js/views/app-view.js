@@ -11,7 +11,7 @@ window.app = window.app || {};
 
         // Instead of generating a new element, bind to the existing skeleton of
         // the App already present in the HTML.
-        el: '#usersapp',
+        // el: '#usersapp',
 
         // Our template for the user counter
         counterTemplate: _.template('<p class="text-right">Displaying <%- count %> users</p>'),
@@ -19,6 +19,9 @@ window.app = window.app || {};
         // At initialization, kick things off by
         // loading any preexisting users that might be saved.
         initialize: function () {
+            this.searchView = new window.app.SearchView({ model: window.app.search });
+            this.usersView = new window.app.UsersView({ collection: window.app.users });
+            this.render();
             _.bind(this.addUsersSection, this, window.app.search);
             this.$search = $('#search-box');
             this.$list = $('#user-section');
@@ -58,6 +61,19 @@ window.app = window.app || {};
                 count: count,
             }));
         },
+
+        render: function () {
+            this.$el.html('<h3>User List</h3>' +
+                            '<div style="width:300px">' +
+                                '<div id="search-box"></div>' +
+                                '<div id="user-section"></div>' +
+                                '<div id="user-count"></div>' +
+                                '<button class="btn btn-primary pull-right">New User</button>' +
+                            '</div>');
+            this.searchView.setElement(this.$('#search-box')).render();
+            this.usersView.setElement(this.$('#user-section')).render();
+            return this.el;
+        }
 
     });
 }(jQuery));

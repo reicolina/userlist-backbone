@@ -1,6 +1,6 @@
 window.app = window.app || {};
 
-(function ($) {
+(function () {
     'use strict';
 
     // Users List View
@@ -16,10 +16,10 @@ window.app = window.app || {};
 
         // At initialization, kick things off by
         // loading any preexisting users that might be saved.
-        initialize: function () {
-            this.$list = $('#user-section');
-            this.renderUsers();
-        },
+        // initialize: function () {
+        //     this.$list = $('#user-section');
+        //     this.renderUsers();
+        // },
 
         setSearch: function (search) {
             this.search = search;
@@ -29,13 +29,13 @@ window.app = window.app || {};
         // appending its element to the `<table>`.
         renderUser: function (user) {
             var view = new window.app.UserView({ model: user });
-            $('#user-list').append(view.render().el);
+            this.$('#user-list').append(view.render().el);
         },
 
         // Add all items in the **Users** collection at once.
         renderUsers: function () {
-            this.$list.html('');
-            this.$list.html(this.template());
+            this.$el.html('');
+            this.$el.html(this.template());
             if (!this.search) {
                 this.collection.each(this.renderUser, this);
                 this.count = this.collection.length;
@@ -58,4 +58,4 @@ window.app = window.app || {};
             return this.count;
         }
     });
-}(jQuery));
+}());
