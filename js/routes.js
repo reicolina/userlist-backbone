@@ -13,14 +13,13 @@ window.app = window.app || {};
 
         routes: {
             "": "handleMain",
-            "main": "handleMain",
             "userdetails": "handleUserDetails"
         },
 
         handleMain: function () {
-            if (!this.mainView) {
+            // if (!this.mainView) {
                 this.mainView = new window.app.MainView();
-            }
+            // }
 
             this.container.myChildView = this.mainView;
             this.container.render();
