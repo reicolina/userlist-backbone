@@ -25,6 +25,7 @@ window.app = window.app || {};
             return this;
         },
 
+        // keep the search model updated
         updateModel: function () {
             this.model.set("text", this.$('#user-search').val());
         }

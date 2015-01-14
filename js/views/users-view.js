@@ -43,10 +43,12 @@ window.app = window.app || {};
             }
         },
 
+        // set the user count
         setCount: function (newCount) {
             this.count = newCount;
         },
 
+        // return the user count
         getCount: function () {
             return this.count;
         }

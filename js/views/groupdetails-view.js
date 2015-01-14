@@ -30,22 +30,26 @@ window.app = window.app || {};
             'submit': 'save'
         },
 
+        // go back to the original page
         goBack: function () {
             var parent = this.options && this.options.from ? this.options.from : "new";
             window.app.router.navigate("userdetails/" + parent, {trigger: true});
         },
 
+        // save the new group
         save: function () {
             this.model.set('name', this.$('#inputName').val());
             window.app.groups.push(this.model);
             this.goBack();
         },
 
+        // sets the variables needed by the view...and render
         initialize: function (options) {
             this.options = options;
             this.render();
         },
 
+        // render the view
         render: function () {
             this.$el.html(this.template());
             return this;

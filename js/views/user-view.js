@@ -8,7 +8,7 @@ window.app = window.app || {};
 
     // The DOM element for a user item...
     window.app.UserView = Backbone.View.extend({
-        //... is a row tag.
+        //... it is a row tag.
         tagName:  'tr',
 
         // Cache the template function for a single item.
@@ -20,6 +20,7 @@ window.app = window.app || {};
             'click #fullName': 'showDetails'
         },
 
+        // navigate to the user details view
         showDetails: function () {
             window.app.router.navigate("userdetails/" + this.model.cid, {trigger: true});
         },
@@ -30,10 +31,12 @@ window.app = window.app || {};
             this.listenTo(this.model, 'destroy', this.remove);
         },
 
+        // delete the user model
         deleteUser: function () {
             this.model.destroy();
         },
 
+        // render the view
         render: function () {
             this.$el.html(this.template(this.model.toJSON()));
             return this;

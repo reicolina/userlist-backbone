@@ -6,6 +6,7 @@ window.app = window.app || {};
     // Container View
     // --------------
 
+    // this is the container for the entire app. Views will be rendered within this container
     window.app.ContainerView = Backbone.View.extend({
         myChildView: null,
 

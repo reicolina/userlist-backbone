@@ -45,6 +45,7 @@ window.app = window.app || {};
             'submit': 'save'
         },
 
+        // save the user details
         save: function () {
             this.model.set('fullName', this.$('#inputFullName').val());
             this.model.set('phone', this.$('#inputPhoneNumber').val());
@@ -53,15 +54,18 @@ window.app = window.app || {};
             this.goToMain();
         },
 
+        // navigate to the main view
         goToMain: function () {
             window.app.router.navigate("", {trigger: true});
         },
 
+        // navigate to the new group view
         newGroup: function () {
             var param = window.app.users.get(this.model.cid) ? this.model.cid : "new";
             window.app.router.navigate("groupdetails/" + param, {trigger: true});
         },
 
+        // fill the dropdownbox with the current groups
         populateDropdown: function () {
             window.app.groups.each(function (group) {
                 var selected = (group.get("name") === this.model.get("group") ? " selected" : "");
@@ -69,11 +73,13 @@ window.app = window.app || {};
             }, this);
         },
 
+        // render the view and do some initialization
         initialize: function () {
             this.render();
             this.populateDropdown();
         },
 
+        // render the view
         render: function () {
             this.$el.html(this.template(this.model.toJSON(), { groups: this.groups }));
             return this;

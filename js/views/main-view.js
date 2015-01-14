@@ -3,9 +3,10 @@ window.app = window.app || {};
 (function () {
     'use strict';
 
-    // Container View
-    // --------------
+    // Main View
+    // ---------
 
+    // initial view of the application
     window.app.MainView = Backbone.View.extend({
 
         template: _.template('<h3>User List</h3>' +
@@ -23,10 +24,12 @@ window.app = window.app || {};
             'click #new-user': 'newUser'
         },
 
+        // go to the new user view
         newUser: function () {
             window.app.router.navigate("userdetails/new", {trigger: true});
         },
 
+        // render and fill the subcomponents within this view
         initialize: function () {
             this.render();
             _.bind(this.addUsersSection, this, window.app.search);
@@ -36,12 +39,13 @@ window.app = window.app || {};
             this.addUsersSection();
         },
 
+        // add the search component to the view
         addSearch: function () {
             this.searchView = new window.app.SearchView({ model: window.app.search });
             this.searchView.setElement(this.$('#search-box')).render();
         },
 
-        // Add all items in the **Users** collection at once.
+        // add all items in the **Users** collection at once.
         addUsersSection: function (search) {
             this.userList = new window.app.UsersView({ collection: window.app.users });
             this.userList.setSearch(search);
@@ -49,11 +53,13 @@ window.app = window.app || {};
             this.renderCounter();
         },
 
+        // decrease the user count when deleting a user
         decreaseCount: function () {
             this.userList.setCount(this.userList.getCount() - 1);
             this.renderCounter();
         },
 
+        // add the counter component to the view
         renderCounter: function () {
             var count;
             if (!this.userList.getCount()) {
@@ -66,6 +72,7 @@ window.app = window.app || {};
             }));
         },
 
+        // render this view
         render: function () {
             this.$el.html(this.template());
             return this;

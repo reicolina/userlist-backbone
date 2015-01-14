@@ -18,10 +18,7 @@ window.app = window.app || {};
         },
 
         handleMain: function () {
-            // if (!this.mainView) {
             this.mainView = new window.app.MainView();
-            // }
-
             this.container.myChildView = this.mainView;
             this.container.render();
         },
@@ -44,6 +41,7 @@ window.app = window.app || {};
         },
     });
 
+    // initialize the router and kick off the history engine
     $(document).ready(function () {
         window.app.router = new MyRouter();
         Backbone.history.start();
