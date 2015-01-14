@@ -18,11 +18,20 @@ window.app = window.app || {};
                                   '</div>' +
                                   '<div class="form-group">' +
                                     '<div class="col-sm-offset-2 col-sm-10">' +
-                                      '<button class="btn btn-default">Cancel</button>' +
+                                      '<button id="cancel" class="btn btn-default">Cancel</button>' +
                                       '<button type="submit" class="btn btn-primary">Save</button>' +
                                     '</div>' +
                                   '</div>' +
                                 '</form>'),
+
+        // The DOM events specific to a user.
+        events: {
+            'click #cancel': 'goBack'
+        },
+
+        goBack: function () {
+            window.app.router.navigate("userdetails", {trigger: true});
+        },
 
         initialize: function () {
             this.render();

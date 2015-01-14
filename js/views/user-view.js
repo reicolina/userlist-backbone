@@ -12,11 +12,16 @@ window.app = window.app || {};
         tagName:  'tr',
 
         // Cache the template function for a single item.
-        template: _.template('<td><%- fullName %></td><td><button id="deleteBtn" class="btn btn-danger btn-xs pull-right">x</button></td>'),
+        template: _.template('<td id="fullName"><%- fullName %></td><td><button id="deleteBtn" class="btn btn-danger btn-xs pull-right">x</button></td>'),
 
         // The DOM events specific to a user.
         events: {
-            'click #deleteBtn': 'delete'
+            'click #deleteBtn': 'delete',
+            'click #fullName': 'showDetails'
+        },
+
+        showDetails: function () {
+            window.app.router.navigate("userdetails", {trigger: true});
         },
 
         // The userView listens for changes to its model, re-rendering.

@@ -14,13 +14,6 @@ window.app = window.app || {};
         // Cache the template function for the users list.
         template: _.template('<table id="user-list" class="table table-hover .table-condensed"></table>'),
 
-        // At initialization, kick things off by
-        // loading any preexisting users that might be saved.
-        // initialize: function () {
-        //     this.$list = $('#user-section');
-        //     this.renderUsers();
-        // },
-
         setSearch: function (search) {
             this.search = search;
         },

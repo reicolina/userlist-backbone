@@ -13,10 +13,19 @@ window.app = window.app || {};
                                 '<div id="search-box"></div>' +
                                 '<div id="user-section"></div>' +
                                 '<div id="user-count"></div>' +
-                                '<button class="btn btn-primary pull-right">New User</button>' +
+                                '<button id="new-user" class="btn btn-primary pull-right">New User</button>' +
                             '</div>'),
 
         counterTemplate: _.template('<p class="text-right">Displaying <%- count %> users</p>'),
+
+        // The DOM events specific to an item.
+        events: {
+            'click #new-user': 'newUser'
+        },
+
+        newUser: function () {
+            window.app.router.navigate("userdetails", {trigger: true});
+        },
 
         initialize: function () {
             this.render();

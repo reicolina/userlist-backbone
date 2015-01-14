@@ -30,16 +30,30 @@ window.app = window.app || {};
                                           '<option>Marketing</option>' +
                                           '<option>Sales</option>' +
                                         '</select>' +
-                                        '<button class="btn btn-success pull-right">Add Group</button>' +
+                                        '<button id="addGroup" class="btn btn-success pull-right">Add Group</button>' +
                                     '</div>' +
                                   '</div>' +
                                   '<div class="form-group">' +
                                     '<div class="col-sm-offset-2 col-sm-10">' +
-                                      '<button class="btn btn-default">Cancel</button>' +
+                                      '<button id="cancel" class="btn btn-default">Cancel</button>' +
                                       '<button type="submit" class="btn btn-primary">Save</button>' +
                                     '</div>' +
                                   '</div>' +
                                 '</form>'),
+
+        // The DOM events specific to a user.
+        events: {
+            'click #cancel': 'goToMain',
+            'click #addGroup': 'newGroup'
+        },
+
+        goToMain: function () {
+            window.app.router.navigate("", {trigger: true});
+        },
+
+        newGroup: function () {
+            window.app.router.navigate("groupdetails", {trigger: true});
+        },
 
         initialize: function () {
             this.render();
