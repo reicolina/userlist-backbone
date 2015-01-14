@@ -24,7 +24,7 @@ window.app = window.app || {};
         },
 
         newUser: function () {
-            window.app.router.navigate("userdetails", {trigger: true});
+            window.app.router.navigate("userdetails/new", {trigger: true});
         },
 
         initialize: function () {

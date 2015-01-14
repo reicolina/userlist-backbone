@@ -44,7 +44,15 @@ window.app = window.app || {};
         // The DOM events specific to a user.
         events: {
             'click #cancel': 'goToMain',
-            'click #addGroup': 'newGroup'
+            'click #addGroup': 'newGroup',
+            'submit': 'save'
+        },
+
+        save: function () {
+            this.model.set('fullName', this.$('#inputFullName').val());
+            this.model.set('phone', this.$('#inputPhoneNumber').val());
+            window.app.users.push(this.model);
+            this.goToMain();
         },
 
         goToMain: function () {

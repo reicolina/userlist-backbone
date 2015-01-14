@@ -13,7 +13,7 @@ window.app = window.app || {};
 
         routes: {
             "": "handleMain",
-            "userdetails": "handleUserDetails",
+            "userdetails/:userId": "handleUserDetails",
             "groupdetails": "handleGroupDetails"
         },
 
@@ -26,20 +26,19 @@ window.app = window.app || {};
             this.container.render();
         },
 
-        handleUserDetails: function () {
-            // if (!this.userDetailsView) {
-            this.userDetailsView = new window.app.UserDetailsView();
-            // }
+        handleUserDetails: function (userId) {
+            if (userId && userId === "new") {
+                this.userDetailsView = new window.app.UserDetailsView({ model: new window.app.User() });
+            } else {
+                this.userDetailsView = new window.app.UserDetailsView();
+            }
 
             this.container.myChildView = this.userDetailsView;
             this.container.render();
         },
 
         handleGroupDetails: function () {
-            // if (!this.groupDetailsView) {
             this.groupDetailsView = new window.app.GroupDetailsView();
-            // }
-
             this.container.myChildView = this.groupDetailsView;
             this.container.render();
         },
