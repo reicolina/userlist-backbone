@@ -16,7 +16,7 @@ window.app = window.app || {};
 
         // The DOM events specific to a user.
         events: {
-            'click #deleteBtn': 'delete',
+            'click #deleteBtn': 'deleteUser',
             'click #fullName': 'showDetails'
         },
 
@@ -30,7 +30,7 @@ window.app = window.app || {};
             this.listenTo(this.model, 'destroy', this.remove);
         },
 
-        delete: function () {
+        deleteUser: function () {
             this.model.destroy();
         },
 
