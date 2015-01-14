@@ -14,7 +14,7 @@ window.app = window.app || {};
         routes: {
             "": "handleMain",
             "userdetails/:userId": "handleUserDetails",
-            "groupdetails": "handleGroupDetails"
+            "groupdetails/:from": "handleGroupDetails"
         },
 
         handleMain: function () {
@@ -37,8 +37,8 @@ window.app = window.app || {};
             this.container.render();
         },
 
-        handleGroupDetails: function () {
-            this.groupDetailsView = new window.app.GroupDetailsView();
+        handleGroupDetails: function (from) {
+            this.groupDetailsView = new window.app.GroupDetailsView({ model: new window.app.Group(), from: from });
             this.container.myChildView = this.groupDetailsView;
             this.container.render();
         },

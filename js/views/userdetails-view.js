@@ -58,7 +58,8 @@ window.app = window.app || {};
         },
 
         newGroup: function () {
-            window.app.router.navigate("groupdetails", {trigger: true});
+            var param = window.app.users.get(this.model.cid) ? this.model.cid : "new";
+            window.app.router.navigate("groupdetails/" + param, {trigger: true});
         },
 
         populateDropdown: function () {

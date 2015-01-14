@@ -26,14 +26,23 @@ window.app = window.app || {};
 
         // The DOM events specific to a user.
         events: {
-            'click #cancel': 'goBack'
+            'click #cancel': 'goBack',
+            'submit': 'save'
         },
 
         goBack: function () {
-            window.app.router.navigate("userdetails", {trigger: true});
+            var parent = this.options && this.options.from ? this.options.from : "new";
+            window.app.router.navigate("userdetails/" + parent, {trigger: true});
         },
 
-        initialize: function () {
+        save: function () {
+            this.model.set('name', this.$('#inputName').val());
+            window.app.groups.push(this.model);
+            this.goBack();
+        },
+
+        initialize: function (options) {
+            this.options = options;
             this.render();
         },
 
