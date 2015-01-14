@@ -30,7 +30,7 @@ window.app = window.app || {};
             if (userId && userId === "new") {
                 this.userDetailsView = new window.app.UserDetailsView({ model: new window.app.User() });
             } else {
-                this.userDetailsView = new window.app.UserDetailsView();
+                this.userDetailsView = new window.app.UserDetailsView({ model: window.app.users.get(userId) });
             }
 
             this.container.myChildView = this.userDetailsView;

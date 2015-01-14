@@ -21,7 +21,7 @@ window.app = window.app || {};
         },
 
         showDetails: function () {
-            window.app.router.navigate("userdetails", {trigger: true});
+            window.app.router.navigate("userdetails/" + this.model.cid, {trigger: true});
         },
 
         // The userView listens for changes to its model, re-rendering.

@@ -13,13 +13,13 @@ window.app = window.app || {};
                                   '<div class="form-group">' +
                                     '<label for="inputFullName" class="col-sm-2 control-label">Name</label>' +
                                     '<div class="col-sm-10">' +
-                                      '<input type="text" class="form-control" id="inputFullName" placeholder="Full Name">' +
+                                      '<input type="text" class="form-control" id="inputFullName" placeholder="Full Name" value="<%- fullName %>">' +
                                     '</div>' +
                                   '</div>' +
                                   '<div class="form-group">' +
                                     '<label for="inputPhoneNumber" class="col-sm-2 control-label">Phone</label>' +
                                     '<div class="col-sm-10">' +
-                                      '<input type="text" class="form-control" id="inputPhoneNumber" placeholder="Phone Number">' +
+                                      '<input type="text" class="form-control" id="inputPhoneNumber" placeholder="Phone Number" value="<%- phone %>">' +
                                     '</div>' +
                                   '</div>' +
                                   '<div class="form-group">' +
@@ -51,6 +51,7 @@ window.app = window.app || {};
         save: function () {
             this.model.set('fullName', this.$('#inputFullName').val());
             this.model.set('phone', this.$('#inputPhoneNumber').val());
+            this.model.set('group', this.$('#inputGroup').val());
             window.app.users.push(this.model);
             this.goToMain();
         },
@@ -68,7 +69,7 @@ window.app = window.app || {};
         },
 
         render: function () {
-            this.$el.html(this.template());
+            this.$el.html(this.template(this.model.toJSON()));
             return this;
         }
     });
