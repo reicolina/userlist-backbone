@@ -1,4 +1,3 @@
-/*global Backbone */
 window.app = window.app || {};
 
 (function () {
@@ -7,7 +6,6 @@ window.app = window.app || {};
     // User Collection
     // ---------------
 
-    // The collection of users is backed by *localStorage* instead of a remote server (for now!)
     var Users = Backbone.Collection.extend({
         // Reference to this collection's model.
         model: window.app.User,

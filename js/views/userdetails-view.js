@@ -26,9 +26,6 @@ window.app = window.app || {};
                                     '<label for="inputGroup" class="col-sm-2 control-label">Group</label>' +
                                     '<div class="col-sm-10">' +
                                         '<select class="form-control" id="inputGroup">' +
-                                          '<option>Admin</option>' +
-                                          '<option>Marketing</option>' +
-                                          '<option>Sales</option>' +
                                         '</select>' +
                                         '<button id="addGroup" class="btn btn-success pull-right">Add Group</button>' +
                                     '</div>' +
@@ -64,12 +61,20 @@ window.app = window.app || {};
             window.app.router.navigate("groupdetails", {trigger: true});
         },
 
+        populateDropdown: function () {
+            window.app.groups.each(function (group) {
+                var selected = (group.get("name") === this.model.get("group") ? " selected" : "");
+                this.$('#inputGroup').append('<option' + selected + '>' + group.get("name") + '</option>');
+            }, this);
+        },
+
         initialize: function () {
             this.render();
+            this.populateDropdown();
         },
 
         render: function () {
-            this.$el.html(this.template(this.model.toJSON()));
+            this.$el.html(this.template(this.model.toJSON(), { groups: this.groups }));
             return this;
         }
     });
