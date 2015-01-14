@@ -13,12 +13,13 @@ window.app = window.app || {};
 
         routes: {
             "": "handleMain",
-            "userdetails": "handleUserDetails"
+            "userdetails": "handleUserDetails",
+            "groupdetails": "handleGroupDetails"
         },
 
         handleMain: function () {
             // if (!this.mainView) {
-                this.mainView = new window.app.MainView();
+            this.mainView = new window.app.MainView();
             // }
 
             this.container.myChildView = this.mainView;
@@ -26,11 +27,20 @@ window.app = window.app || {};
         },
 
         handleUserDetails: function () {
-            if (!this.userDetailsView) {
-                this.userDetailsView = new window.app.UserDetailsView();
-            }
+            // if (!this.userDetailsView) {
+            this.userDetailsView = new window.app.UserDetailsView();
+            // }
 
             this.container.myChildView = this.userDetailsView;
+            this.container.render();
+        },
+
+        handleGroupDetails: function () {
+            // if (!this.groupDetailsView) {
+            this.groupDetailsView = new window.app.GroupDetailsView();
+            // }
+
+            this.container.myChildView = this.groupDetailsView;
             this.container.render();
         },
     });

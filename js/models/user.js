@@ -10,9 +10,9 @@ window.app = window.app || {};
     window.app.User = Backbone.Model.extend({
         // Default attributes for the user
         defaults: {
-            fullName: '',
-            phone: '',
-            group: ''
+            fullName: "",
+            phone: "",
+            group: ""
         }
     });
 }());
