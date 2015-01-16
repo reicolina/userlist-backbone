@@ -24,4 +24,18 @@ window.app = window.app || {};
     user = new window.app.User();
     user.set("fullName", "Carlos Smith");
     window.app.users.push(user);
+
+    // if you want to connect to a API server to get the data you can use:
+    // Backbone.ajax({
+    //     dataType: "json",
+    //     url: "https://api.mysite.com/users",
+    //     data: "",
+    //     success: function (data) {
+    //         // ... manipulate the data (JSON) and set the appropiate values in a model
+    //     },
+    //     error: function (data) {
+    //         // ... do error handling here
+    //     }
+    // });
+
 }());
